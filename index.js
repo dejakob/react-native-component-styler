@@ -117,6 +117,7 @@ function createStyledComponent(style, render) {
         [name]: style
     });
     
+    StyledComponent.variants = Object.keys(style).map(key => uppercaseUnderscoreToCamel(key));
     StyledComponent.propTypes = {
         ...(render.PropTypes || {}),
         ...getPropTypesForVariants(StyledComponent)
@@ -125,6 +126,8 @@ function createStyledComponent(style, render) {
     function StyledComponent(props) {
         return render(props, getTotalStyleForElement.bind(null, name, props || {}));
     }
+
+    return StyledComponent;
 }
 
 export {
