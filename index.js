@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 // React Native Component Styler
 const PREFIX = '__RNCS';
 let globalStyleRaw = {};
+let index = 0;
 
 /**
  * Add global container variants
@@ -52,10 +53,9 @@ function uppercaseUnderscoreToCamel(value) {
  */
 function getTotalStyleForElement(component, props, elementName) {
     const variants = component.variants || ['DEFAULT'];
-
     const styles = variants.map(variant => {
         if (props[uppercaseUnderscoreToCamel(variant)] || variant === 'DEFAULT') {
-            return getStyle(`${component.name}__${elementName}__${variant}`);
+            return getStyle(`${component._name}__${elementName}__${variant}`);
         }
     });
 
@@ -110,21 +110,23 @@ function getPropTypesForVariants(component) {
  *   })
  * ```
  */
-function createStyledComponent(style, render) {
-    const name = `${PREFIX}${Date.now()}`;
+function createStyledComponent(variants, style, render) {
+    const name = `${PREFIX}${index}`;
+    index++;
 
     createStyle({
         [name]: style
     });
     
-    StyledComponent.variants = Object.keys(style).map(key => uppercaseUnderscoreToCamel(key));
+    StyledComponent.variants = variants;
+    StyledComponent._name = name;
     StyledComponent.propTypes = {
         ...(render.PropTypes || {}),
         ...getPropTypesForVariants(StyledComponent)
     };
 
     function StyledComponent(props) {
-        return render(props, getTotalStyleForElement.bind(null, name, props || {}));
+        return render(props, getTotalStyleForElement.bind(StyledComponent, StyledComponent, props || {}));
     }
 
     return StyledComponent;
