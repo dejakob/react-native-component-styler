@@ -1,0 +1,10 @@
+{
+  "name": "react-native-component-styler",
+  "version": "1.0.0",
+  "description": "React Native Component Styler",
+  "main": "index.js",
+  "repository": "https://github.com/dejakob/react-native-component-styler",
+  "author": "dejakob",
+  "license": "MIT",
+  "private": false
+}
