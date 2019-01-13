@@ -80,7 +80,7 @@ All functionality of [React Native Styler](https://github.com/dejakob/react-nati
 
 ## addGlobalContainerVariants method
 
-Add variants to all elements named `container`. One use case can be spacing
+Add variants to all elements named `Container`. One use case can be spacing
 
 ```jsx
     addGlobalContainerVariants({
