@@ -23,13 +23,9 @@ let index = 0;
  * ```
  */
 function addGlobalContainerVariants(block) {
-    const definition = {};
-
-    Object
-        .keys(block)
-        .forEach(variant => {
-            definition[`${PREFIX}__${variant}`] = block[variant]; 
-        });
+    const definition = {
+        [PREFIX]: block
+    };
 
     globalStyleRaw = block;
     createStyle(definition);
