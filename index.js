@@ -117,7 +117,7 @@ function createStyledComponent(variants, style, render) {
     StyledComponent.variants = variants;
     StyledComponent._name = name;
     StyledComponent.propTypes = {
-        ...(render.PropTypes || {}),
+        ...(render.propTypes || {}),
         ...getPropTypesForVariants(StyledComponent)
     };
 
