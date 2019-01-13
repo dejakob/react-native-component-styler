@@ -1,5 +1,7 @@
 # React Native Component Styler
 
+[![NPM](https://nodei.co/npm/react-native-component-styler.png)](https://npmjs.org/package/react-native-component-styler)
+
 Lib to create UI components in React Native
 
 ## createStyledComponent method
