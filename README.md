@@ -4,6 +4,9 @@
 
 Lib to create UI components in React Native
 
+Based on [React Native Styler](http://github.com/dejakob/react-native-styler).
+Don't forget to include `import { StylerProvider } from 'react-native-styler';` into your project!
+
 ## createStyledComponent method
 
 The `createStyledComponent` method expects three parameters:
